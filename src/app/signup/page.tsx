@@ -1,20 +1,7 @@
-"use client";
-
 import SignupComponent from "@/view/signup/page";
-import styled from "styled-components";
 
 const Signup = () => {
-  return (
-    <SignupStyle>
-      <SignupComponent></SignupComponent>
-    </SignupStyle>
-  );
+  return <SignupComponent></SignupComponent>;
 };
 
 export default Signup;
-
-const SignupStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

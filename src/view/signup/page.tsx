@@ -71,28 +71,36 @@ const SignupComponent = () => {
   };
 
   return (
-    <SignupWrap>
-      <Title>CareMind</Title>
-      <TextBox>회원가입</TextBox>
-      <SignupInputWrap>
-        {FIELD_DATA.map(({ name, type, placeholder, label }) => (
-          <InputBox key={name}>
-            <InputLabel>{label}</InputLabel>
-            <InputStyle
-              name={name}
-              type={type}
-              placeholder={placeholder}
-              onChange={handleUserInfo}
-            />
-          </InputBox>
-        ))}
-      </SignupInputWrap>
-      <SignupBtn onClick={handleSignUp} disabled={!isValidCheck}>
-        회원가입
-      </SignupBtn>
-    </SignupWrap>
+    <SignupStyle>
+      <SignupWrap>
+        <Title>CareMind</Title>
+        <TextBox>회원가입</TextBox>
+        <SignupInputWrap>
+          {FIELD_DATA.map(({ name, type, placeholder, label }) => (
+            <InputBox key={name}>
+              <InputLabel>{label}</InputLabel>
+              <InputStyle
+                name={name}
+                type={type}
+                placeholder={placeholder}
+                onChange={handleUserInfo}
+              />
+            </InputBox>
+          ))}
+        </SignupInputWrap>
+        <SignupBtn onClick={handleSignUp} disabled={!isValidCheck}>
+          회원가입
+        </SignupBtn>
+      </SignupWrap>
+    </SignupStyle>
   );
 };
+
+const SignupStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const SignupWrap = styled.form`
   width: 500px;
