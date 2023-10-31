@@ -13,4 +13,8 @@ const Signup = () => {
 
 export default Signup;
 
-const SignupStyle = styled.div``;
+const SignupStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
