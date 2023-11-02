@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { GetProfile, ProfileTitleData } from "../../model/service/GetProfile";
+import {
+  GetProfile,
+  ProfileTitleData,
+} from "../../../model/service/GetProfile";
 
 const ProfileTitle: React.FC = () => {
   const [data, setData] = useState<ProfileTitleData | null>(null);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { GetProfile, ApiResponse } from "../../model/service/GetProfile"; // GetProfile 클래스 및 ApiResponse 타입을 가져옵니다.
+import { GetProfile, ApiResponse } from "../../../model/service/GetProfile"; // GetProfile 클래스 및 ApiResponse 타입을 가져옵니다.
 
 const ProfileCareer = () => {
   const [data, setData] = useState<ApiResponse | null>(null);

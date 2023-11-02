@@ -1,7 +1,7 @@
 "use client";
 
-import ProfileTitle from "../application/ProfileTitle";
-import ProfileCareer from "../application/ProfileCareer";
+import ProfileTitle from "./components/ProfileTitle";
+import ProfileCareer from "./components/ProfileCareer";
 import styled from "styled-components";
 
 const ProfileView = () => {
