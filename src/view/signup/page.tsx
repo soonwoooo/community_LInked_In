@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-
-const BASE_API = "111.11.11:8000";
+import SignUpViewModel from "@/view-model/signup/SignupViewModel";
 
 const SignupComponent = () => {
   const router = useRouter();
@@ -21,53 +20,28 @@ const SignupComponent = () => {
     passwordCheck: "",
   });
 
+  const [signupCheck, setSignupCheck] = useState<string>("");
+
   const handleUserInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  const pwRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{4,16}$/;
+  const signUpVM = new SignUpViewModel(
+    userInfo.email,
+    userInfo.password,
+    userInfo.passwordCheck
+  );
 
-  const isEmailValid = emailRegex.test(userInfo.email);
-  const isPwValid = pwRegex.test(userInfo.password);
-  const isPwChkValid = userInfo.password === userInfo.passwordCheck;
+  const onClcikAlert = async () => {
+    const alertCheck = await signUpVM.showAlert();
+    setSignupCheck(alertCheck);
 
-  const isValidCheck = isEmailValid && isPwValid && isPwChkValid;
-
-  const postSignin = () => {
-    // fetch(`${BASE_API}/users/`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     email: userInfo.email,
-    //     password: userInfo.password,
-    //   }),
-    // })
-    //   .then((response) => {
-    //     if (response.status === 201) {
-    //       return response.json();
-    //     }
-    //     throw new Error("communication failure");
-    //   })
-    //   .then((result) => {
-    //     if (result.message === "USER_CREATED") {
-    //       alert("회원가입 완료");
-    //       router.push("/login");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    alert("회원가입완료");
-  };
-
-  const handleSignUp = (e: React.FormEvent) => {
-    e.preventDefault();
-    postSignin();
+    if (alertCheck === "success") {
+      alert("회원가입 성공!");
+    } else if (alertCheck === "duplicated") {
+      alert("중복된 이메일");
+    }
   };
 
   return (
@@ -88,7 +62,13 @@ const SignupComponent = () => {
             </InputBox>
           ))}
         </SignupInputWrap>
-        <SignupBtn onClick={handleSignUp} disabled={!isValidCheck}>
+        <SignupBtn
+          onClick={(e: React.FormEvent) => {
+            e.preventDefault;
+            onClcikAlert();
+          }}
+          // disabled={!isValidCheck}
+        >
           회원가입
         </SignupBtn>
       </SignupWrap>
@@ -155,7 +135,7 @@ const InputStyle = styled.input`
   }
 `;
 
-const SignupBtn = styled.button`
+const SignupBtn = styled.div`
   width: 150px;
   padding: 16px;
   font-size: 20px;
