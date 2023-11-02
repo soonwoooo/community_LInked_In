@@ -2,7 +2,12 @@ import styled from "styled-components";
 const ProfileTitle = () => {
   return (
     <ProfileTitleWrapper>
-      <BackGroundImage></BackGroundImage>
+      <BackGroundImageWrapper>
+        <BackGroundImage
+          alt="배경 이미지"
+          src="./Rectangle 3.png"
+        ></BackGroundImage>
+      </BackGroundImageWrapper>
     </ProfileTitleWrapper>
   );
 };
@@ -17,8 +22,10 @@ const ProfileTitleWrapper = styled.div`
   border: 1px solid pink;
   box-shadow: 0px 20px 60px 0px rgba(241, 244, 248, 0.5);
 `;
-const BackGroundImage = styled.div`
+const BackGroundImageWrapper = styled.div`
   width: 100%;
   height: 180px;
   border: 1px solid blue;
 `;
+
+const BackGroundImage = styled.img``;
