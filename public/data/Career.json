@@ -1,0 +1,26 @@
+{
+  "message": "success",
+  "category": "Experience",
+  "data": [
+    {
+      "imgSrc": "/images/careerImg.png",
+      "title": "백석대학교",
+      "titleSub": "간호학과 졸업",
+      "periodStart": 2019,
+      "periodEnd": 2022,
+      "detail": "전공 수업은 영어수업으로 진행",
+      "id": 1,
+      "workSpace": "영국"
+    },
+    {
+      "imgSrc": "/images/careerImg.png",
+      "title": "서울대학교",
+      "titleSub": "경영학과 졸업",
+      "periodStart": 2016,
+      "periodEnd": 2020,
+      "detail": "병원 경영지원가로써 활동하기 위해 노력했음",
+      "id": 2,
+      "workSpace": "서울"
+    }
+  ]
+}
