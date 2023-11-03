@@ -45,6 +45,7 @@ export class GetProfile {
     console.log("모달");
     try {
       const response = await axios.get(`${this.apiUrl}/Career.json`);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       throw Error("Failed to fetch career data.");

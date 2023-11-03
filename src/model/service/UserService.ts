@@ -1,6 +1,7 @@
 import axios from "axios";
+import { UserServiceModel } from "./model/UserServiceModel";
 
-class UserService {
+class UserService implements UserServiceModel {
   private apiUrl: string;
 
   constructor() {
