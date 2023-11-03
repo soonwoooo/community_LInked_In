@@ -2,21 +2,16 @@
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
-import {
-  GetProfile,
-  ProfileTitleData,
-} from "../../../model/service/UserProfileService";
+import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModle";
 
 const ProfileTitle: React.FC = () => {
-  const [data, setData] = useState<ProfileTitleData | null>(null);
+  const [data, setData] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getProfile = new GetProfile();
-        const titleData = await getProfile.getTitle();
-
+        const getProfile = new UserProfileViewModel();
+        const titleData = await getProfile.getProfileTitleData();
         setData(titleData);
       } catch (error) {
         console.error(error);

@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import {
-  GetProfile,
-  ApiResponse,
-} from "../../../model/service/UserProfileService"; // GetProfile 클래스 및 ApiResponse 타입을 가져옵니다.
+import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModle";
 
 const ProfileCareer = () => {
-  const [data, setData] = useState<ApiResponse | null>(null);
+  const [data, setData] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getProfile = new GetProfile();
-        const careerData = await getProfile.getCareer();
-
+        const getProfile = new UserProfileViewModel();
+        const careerData = await getProfile.getProfileCareerData();
         setData(careerData);
       } catch (error) {
         console.error(error);
@@ -32,7 +28,7 @@ const ProfileCareer = () => {
     <ProfileCareerStyle>
       <ProfileCareerWrap>
         <CareerCategory>{data.category}</CareerCategory>
-        {data.data?.map((item) => (
+        {data.data?.map((item: any) => (
           <CareerContentBox key={item.id}>
             <CareerPic src={item.imgSrc} alt="사진" width={100} height={100} />
             <CareerDetailBox>

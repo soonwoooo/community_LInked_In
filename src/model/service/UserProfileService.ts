@@ -25,30 +25,20 @@ export interface ApiResponse {
   data: ExperienceData[];
 }
 
-export class GetProfile {
+export class UserProfileService {
   private apiUrl: string;
 
   constructor() {
     this.apiUrl = "/data"; // 새로운 URL로 변경
   }
 
-  async getTitle(): Promise<ProfileTitleData> {
-    try {
-      const response = await axios.get(`${this.apiUrl}/ProfileTitle.json`);
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch title data.");
-    }
+  async getTitle(): Promise<any> {
+    const response = axios.get(`${this.apiUrl}/ProfileTitle.json`);
+    return response;
   }
 
-  async getCareer(): Promise<ApiResponse> {
-    console.log("모달");
-    try {
-      const response = await axios.get(`${this.apiUrl}/Career.json`);
-      console.log(response.data);
-      return response.data;
-    } catch (error) {
-      throw Error("Failed to fetch career data.");
-    }
+  async getCarrer(): Promise<any> {
+    const response = axios.get(`${this.apiUrl}/Career.json`);
+    return response;
   }
 }
