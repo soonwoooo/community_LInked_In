@@ -169,7 +169,7 @@ const ProfileImageWrapper = styled.div`
   height: 170px;
   background-color: white;
   border-radius: 50%;
-  margin-top: -20px;
+  margin-top: -30px;
 `;
 
 const ProfileImage = styled.img`
