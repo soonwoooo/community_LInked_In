@@ -1,29 +1,9 @@
-import axios from "axios";
-
-export interface ProfileTitleData {
-  profileImage: string;
-  name: string;
-  location: string;
-  jobDescription: string;
-  connections: number;
-}
-
-export interface ExperienceData {
-  imgSrc: string;
-  title: string;
-  titleSub: string;
-  periodStart: number;
-  periodEnd: number;
-  detail: string;
-  id: number;
-  workSpace: string;
-}
-
-export interface ApiResponse {
-  message: string;
-  category: string;
-  data: ExperienceData[];
-}
+import axios, { AxiosResponse } from "axios";
+import {
+  ApiResponse,
+  ExperienceData,
+  ProfileTitleData,
+} from "./model/UserProfileService";
 
 export class UserProfileService {
   private apiUrl: string;
@@ -32,13 +12,15 @@ export class UserProfileService {
     this.apiUrl = "/data"; // 새로운 URL로 변경
   }
 
-  async getTitle(): Promise<any> {
-    const response = axios.get(`${this.apiUrl}/ProfileTitle.json`);
-    return response;
+  async getTitle(): Promise<ProfileTitleData> {
+    const response = await axios.get<ProfileTitleData>(
+      `${this.apiUrl}/ProfileTitle.json`
+    );
+    return response.data;
   }
 
-  async getCarrer(): Promise<any> {
-    const response = axios.get(`${this.apiUrl}/Career.json`);
-    return response;
+  async getCarrer(): Promise<ApiResponse> {
+    const response = await axios.get<ApiResponse>(`${this.apiUrl}/Career.json`);
+    return response.data;
   }
 }
