@@ -6,7 +6,7 @@ import axios from "axios";
 import {
   GetProfile,
   ProfileTitleData,
-} from "../../../model/service/GetProfile";
+} from "../../../model/service/UserProfileService";
 
 const ProfileTitle: React.FC = () => {
   const [data, setData] = useState<ProfileTitleData | null>(null);
