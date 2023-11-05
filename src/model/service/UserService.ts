@@ -1,25 +1,33 @@
-import axios from "axios";
-import { UserServiceModel } from "./model/UserServiceModel";
+import axios, { AxiosResponse } from "axios";
+import { UserServiceModel, UserResponse } from "./model/UserServiceModel";
 
 class UserService implements UserServiceModel {
   private apiUrl: string;
 
   constructor() {
-    this.apiUrl = "http://172.30.1.28:3000"; // URL을 하드 코딩
+    this.apiUrl = "http://172.30.1.28:3000";
   }
 
-  async signUp(email: string, password: string): Promise<any> {
-    return axios.post(`${this.apiUrl}/user/signup`, {
-      email: email,
-      password: password,
-    });
+  async signUp(email: string, password: string): Promise<UserResponse> {
+    const response: AxiosResponse<UserResponse> = await axios.post(
+      `${this.apiUrl}/user/signup`,
+      {
+        email,
+        password,
+      }
+    );
+    return response.data;
   }
 
-  async login(email: string, password: string): Promise<any> {
-    return axios.post(`${this.apiUrl}/user/login`, {
-      email: email,
-      password: password,
-    });
+  async login(email: string, password: string): Promise<UserResponse> {
+    const response: AxiosResponse<UserResponse> = await axios.post(
+      `${this.apiUrl}/user/login`,
+      {
+        email,
+        password,
+      }
+    );
+    return response.data;
   }
 }
 

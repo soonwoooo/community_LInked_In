@@ -1,10 +1,13 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
-  /* 다른 전역 스타일 규칙 */
+
+
+  ${reset}
 
   body {
-    margin:0;
+
   }
 
   @font-face {
@@ -21,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
-  /* 다른 전역 스타일 규칙 */
 `;
 
 export default GlobalStyle;

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModle";
+import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModel";
 
 const ProfileTitle: React.FC = () => {
   const [data, setData] = useState<any | null>(null);

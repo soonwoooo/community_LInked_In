@@ -1,3 +1,8 @@
+export interface ProfileService {
+  getTitle: () => Promise<ProfileTitleData>;
+  getCarrer: () => Promise<ApiResponse>;
+}
+
 export interface ProfileTitleData {
   profileImage: string;
   name: string;

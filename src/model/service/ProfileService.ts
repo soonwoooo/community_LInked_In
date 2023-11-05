@@ -1,11 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import {
-  ApiResponse,
-  ExperienceData,
-  ProfileTitleData,
-} from "./model/UserProfileService";
+import { ApiResponse, ProfileTitleData } from "./model/ProfileServiceModel";
 
-export class UserProfileService {
+export class ProfileService implements ProfileService {
   private apiUrl: string;
 
   constructor() {
@@ -13,14 +9,16 @@ export class UserProfileService {
   }
 
   async getTitle(): Promise<ProfileTitleData> {
-    const response = await axios.get<ProfileTitleData>(
+    const response: AxiosResponse<ProfileTitleData> = await axios.get(
       `${this.apiUrl}/ProfileTitle.json`
     );
     return response.data;
   }
 
   async getCarrer(): Promise<ApiResponse> {
-    const response = await axios.get<ApiResponse>(`${this.apiUrl}/Career.json`);
+    const response: AxiosResponse<ApiResponse> = await axios.get(
+      `${this.apiUrl}/Career.json`
+    );
     return response.data;
   }
 }

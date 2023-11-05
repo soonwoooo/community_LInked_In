@@ -1,4 +1,9 @@
 export interface UserServiceModel {
-  signUp: (email: string, password: string) => Promise<any>;
-  login: (email: string, password: string) => Promise<any>;
+  signUp: (email: string, password: string) => Promise<UserResponse>;
+  login: (email: string, password: string) => Promise<UserResponse>;
+}
+
+export interface UserResponse {
+  message: string;
+  token: string;
 }
