@@ -1,8 +1,9 @@
 import { ProfileService } from "@/model/service/ProfileService";
 import {
-  ApiResponse,
   ProfileTitleData,
-} from "@/model/service/model/ProfileServiceModel";
+  ExperienceData,
+  EducationData,
+} from "@/model/service/model/ProfileServiceInterface";
 
 class UserProfileViewModel {
   async getProfileTitleData(): Promise<ProfileTitleData> {
@@ -17,10 +18,22 @@ class UserProfileViewModel {
     }
   }
 
-  async getProfileCareerData(): Promise<ApiResponse> {
+  async getProfileExperience(): Promise<ExperienceData> {
     try {
       const getProfile = new ProfileService();
-      const response = await getProfile.getCarrer();
+      const response = await getProfile.getExperience();
+
+      return response;
+    } catch (error) {
+      console.error("Error getting profile title data:", error);
+      throw error;
+    }
+  }
+
+  async getProfileEducation(): Promise<EducationData> {
+    try {
+      const getProfile = new ProfileService();
+      const response = await getProfile.getEducation();
 
       return response;
     } catch (error) {

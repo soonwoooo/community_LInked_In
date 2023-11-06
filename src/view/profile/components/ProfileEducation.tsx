@@ -3,15 +3,15 @@ import styled from "styled-components";
 import Image from "next/image";
 import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModel";
 
-const ProfileCareer = () => {
+const ProfileEducation = () => {
   const [data, setData] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const getProfile = new UserProfileViewModel();
-        const careerData = await getProfile.getProfileCareerData();
-        setData(careerData);
+        const educationData = await getProfile.getProfileEducation();
+        setData(educationData);
       } catch (error) {
         console.error(error);
       }
@@ -126,4 +126,4 @@ const CareerDetail = styled.div`
   font-weight: 400;
   line-height: 150%;
 `;
-export default ProfileCareer;
+export default ProfileEducation;

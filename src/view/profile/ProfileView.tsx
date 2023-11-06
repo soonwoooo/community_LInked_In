@@ -1,7 +1,8 @@
 "use client";
 
 import ProfileTitle from "./components/ProfileTitle";
-import ProfileCareer from "./components/ProfileCareer";
+import ProfileEducation from "./components/ProfileEducation";
+import ProfileExperience from "./components/ProfileExperience";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -65,13 +66,13 @@ const ProfileView = () => {
           <ProfileCareerStyle>
             <ProfileCareerWrap>
               <CareerCategory>Experience</CareerCategory>
-              <ProfileCareer />
+              <ProfileExperience />
             </ProfileCareerWrap>
           </ProfileCareerStyle>
           <ProfileCareerStyle>
             <ProfileCareerWrap>
               <CareerCategory>Education</CareerCategory>
-              <ProfileCareer />
+              <ProfileEducation />
             </ProfileCareerWrap>
           </ProfileCareerStyle>
         </ProfileTotalBox>

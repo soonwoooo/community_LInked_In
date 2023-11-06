@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { UserServiceModel, UserResponse } from "./model/UserServiceModel";
+import { UserServiceModel, UserResponse } from "./model/UserServiceInterface";
 
 class UserService implements UserServiceModel {
   private apiUrl: string;

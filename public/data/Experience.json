@@ -5,13 +5,13 @@
   "data": [
     {
       "imgSrc": "/images/careerImg.png",
-      "title": "백석대학교",
-      "titleSub": "간호학과 졸업",
+      "title": "마케터",
+      "titleSub": "Self-employed",
       "periodStart": 2019,
       "periodEnd": 2022,
-      "detail": "전공 수업은 영어수업으로 진행",
+      "detail": "사업 진행",
       "id": 1,
-      "workSpace": "영국"
+      "workSpace": "오산"
     },
     {
       "imgSrc": "/images/careerImg.png",
