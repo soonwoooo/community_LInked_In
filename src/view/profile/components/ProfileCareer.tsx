@@ -28,7 +28,6 @@ const ProfileCareer = () => {
     <ProfileCareerStyle>
       <ProfileCareerWrap>
         <CareerCategory>{data.category}</CareerCategory>
-        <CareerCategoryTest>{data.category}</CareerCategoryTest>
         {data.data?.map((item: any) => (
           <CareerContentBox key={item.id}>
             <CareerPic src={item.imgSrc} alt="사진" width={100} height={100} />
@@ -57,25 +56,17 @@ const ProfileCareer = () => {
 const ProfileCareerStyle = styled.div`
   width: 850px;
   flex-shrink: 0;
-  padding: 30px;
+
   background-color: white;
 `;
 
-const ProfileCareerWrap = styled.div``;
+const ProfileCareerWrap = styled.div`
+  padding: 30px;
+`;
 
 const CareerCategory = styled.div`
   color: #181818;
   font-family: Gotham Pro;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-bottom: 8px;
-`;
-
-const CareerCategoryTest = styled.div`
-  color: #181818;
-  /* font-family: Gotham Pro; */
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
