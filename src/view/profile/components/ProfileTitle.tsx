@@ -86,6 +86,7 @@ const ProfileTitleWrapper = styled.div`
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 0px 20px 60px 0px rgba(241, 244, 248, 0.5);
+  margin-bottom: 21px;
 `;
 const BackGroundImageWrapper = styled.div`
   width: 100%;
@@ -188,6 +189,8 @@ const NameAndLocationWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  margin-top: 25px;
+  margin-bottom: 15px;
 `;
 
 const NameLetter = styled.p`

@@ -5,6 +5,12 @@ const GlobalStyle = createGlobalStyle`
 
   ${reset}
 
+  body {
+    display:flex;
+    justify-content: center;
+    background-color: #F7F9FB;
+  }
+
   @font-face {
     font-family: "Gotham Pro";
     src: url("/fonts/GothamPro-Light.woff") format("woff");

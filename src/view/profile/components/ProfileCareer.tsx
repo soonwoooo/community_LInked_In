@@ -25,54 +25,30 @@ const ProfileCareer = () => {
   }
 
   return (
-    <ProfileCareerStyle>
-      <ProfileCareerWrap>
-        <CareerCategory>{data.category}</CareerCategory>
-        {data.data?.map((item: any) => (
-          <CareerContentBox key={item.id}>
-            <CareerPic src={item.imgSrc} alt="사진" width={100} height={100} />
-            <CareerDetailBox>
-              <CareerTitle>{item.title}</CareerTitle>
-              <CareerTitleSubBox>
-                <CareerTitleSub>{item.titleSub}</CareerTitleSub>
-                {item.workSpace && (
-                  <CareerTitleSubLocation>
-                    {item.workSpace}
-                  </CareerTitleSubLocation>
-                )}
-              </CareerTitleSubBox>
-              <CareerPeriod>
-                {item.periodStart} - {item.periodEnd}
-              </CareerPeriod>
-              <CareerDetail>{item.detail}</CareerDetail>
-            </CareerDetailBox>
-          </CareerContentBox>
-        ))}
-      </ProfileCareerWrap>
-    </ProfileCareerStyle>
+    <>
+      {data.data?.map((item: any) => (
+        <CareerContentBox key={item.id}>
+          <CareerPic src={item.imgSrc} alt="사진" width={100} height={100} />
+          <CareerDetailBox>
+            <CareerTitle>{item.title}</CareerTitle>
+            <CareerTitleSubBox>
+              <CareerTitleSub>{item.titleSub}</CareerTitleSub>
+              {item.workSpace && (
+                <CareerTitleSubLocation>
+                  {item.workSpace}
+                </CareerTitleSubLocation>
+              )}
+            </CareerTitleSubBox>
+            <CareerPeriod>
+              {item.periodStart} - {item.periodEnd}
+            </CareerPeriod>
+            <CareerDetail>{item.detail}</CareerDetail>
+          </CareerDetailBox>
+        </CareerContentBox>
+      ))}
+    </>
   );
 };
-
-const ProfileCareerStyle = styled.div`
-  width: 850px;
-  flex-shrink: 0;
-
-  background-color: white;
-`;
-
-const ProfileCareerWrap = styled.div`
-  padding: 30px;
-`;
-
-const CareerCategory = styled.div`
-  color: #181818;
-  font-family: Gotham Pro;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-bottom: 8px;
-`;
 
 const CareerContentBox = styled.div`
   display: flex;
