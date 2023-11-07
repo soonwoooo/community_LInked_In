@@ -1,6 +1,7 @@
 import { Profile } from "@/model/entity/profile/Profile";
 import { ProfileService } from "@/model/service/class/ProfileService";
 import { ProfileViewModelInterface } from "../interface/ProfileViewModelInterface";
+import { ProfileTitleData } from "../interface/ProfileViewModelInterface";
 
 class ProfileViewModel implements ProfileViewModelInterface {
   async getProfileTitleData(): Promise<ProfileTitleData> {
@@ -19,6 +20,8 @@ class ProfileViewModel implements ProfileViewModelInterface {
     try {
       const getProfile = new ProfileService();
       const response = await getProfile.getExperience();
+      console.log("modelView :", response);
+      console.log("modelView 타입:", typeof response);
       return response;
     } catch (error) {
       console.error("Error getting profile title data:", error);

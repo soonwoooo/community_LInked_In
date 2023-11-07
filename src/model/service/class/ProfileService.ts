@@ -14,7 +14,7 @@ export class ProfileService implements ProfileServiceInterface {
     this.apiUrl = "/data"; // 새로운 URL로 변경
   }
 
-  async getTitle(): Promise<Profile> {
+  async getTitle(): Promise<ProfileTitleData> {
     const response: AxiosResponse<ProfileTitleData> = await axios.get(
       `${this.apiUrl}/ProfileTitle.json`
     );
@@ -26,11 +26,14 @@ export class ProfileService implements ProfileServiceInterface {
       `${this.apiUrl}/Experience.json`
     );
 
+    console.log("모델 Experience : ", response);
+    console.log("모델 Experience Type: ", typeof response);
+
     const result = new Profile(
       response.data.id,
       response.data.message,
-      response.data.category,
-      response.data.data
+      response.data.category
+      // response.data.data
     );
 
     return result;

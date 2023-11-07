@@ -7,6 +7,7 @@ export interface ProfileServiceInterface {
 }
 
 export interface ProfileTitleData {
+  id: number;
   profileImage: string;
   name: string;
   location: string;

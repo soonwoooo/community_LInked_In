@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import ProfileViewModel from "@/view-model/profile/class/ProfileViewModel";
+import { Profile } from "@/model/entity/profile/Profile";
 
 const ProfileExperience = () => {
   const [data, setData] = useState<any | null>(null);
@@ -11,6 +12,7 @@ const ProfileExperience = () => {
       try {
         const getProfile = new ProfileViewModel();
         const experienceData = await getProfile.getProfileExperience();
+
         setData(experienceData);
       } catch (error) {
         console.error(error);
@@ -23,7 +25,7 @@ const ProfileExperience = () => {
   if (data === null) {
     return;
   }
-
+  console.log(data);
   return (
     <>
       {data.data?.map((item: any) => (
