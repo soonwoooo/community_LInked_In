@@ -4,8 +4,8 @@ import {
   ProfileTitleData,
   ExperienceData,
   EducationData,
-} from "./model/ProfileServiceInterface";
-import { Profile } from "../entity/profile/Profile";
+} from "../interface/ProfileServiceInterface";
+import { Profile } from "@/model/entity/profile/Profile";
 
 export class ProfileService implements ProfileServiceInterface {
   private apiUrl: string;
@@ -14,21 +14,29 @@ export class ProfileService implements ProfileServiceInterface {
     this.apiUrl = "/data"; // 새로운 URL로 변경
   }
 
-  async getTitle(): Promise<ProfileTitleData> {
+  async getTitle(): Promise<Profile> {
     const response: AxiosResponse<ProfileTitleData> = await axios.get(
       `${this.apiUrl}/ProfileTitle.json`
     );
     return response.data;
   }
 
-  async getExperience(): Promise<ExperienceData> {
+  async getExperience(): Promise<Profile> {
     const response: AxiosResponse<ExperienceData> = await axios.get(
       `${this.apiUrl}/Experience.json`
     );
-    return response.data;
+
+    const result = new Profile(
+      response.data.id,
+      response.data.message,
+      response.data.category,
+      response.data.data
+    );
+
+    return result;
   }
 
-  async getEducation(): Promise<EducationData> {
+  async getEducation(): Promise<Profile> {
     const response: AxiosResponse<EducationData> = await axios.get(
       `${this.apiUrl}/Education.json`
     );
@@ -38,7 +46,6 @@ export class ProfileService implements ProfileServiceInterface {
       response.data.message,
       response.data.category,
       response.data.data
-      // 여기에 경력 데이터를 추가할 수 있음
     );
 
     return result;

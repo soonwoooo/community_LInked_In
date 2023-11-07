@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModel";
+import ProfileViewModel from "@/view-model/profile/class/ProfileViewModel";
 
 const ProfileExperience = () => {
   const [data, setData] = useState<any | null>(null);
@@ -9,7 +9,7 @@ const ProfileExperience = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getProfile = new UserProfileViewModel();
+        const getProfile = new ProfileViewModel();
         const experienceData = await getProfile.getProfileExperience();
         setData(experienceData);
       } catch (error) {

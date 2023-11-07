@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import LoginViewModel from "@/view-model/login/LoginViewModel";
+import LoginViewModel from "@/view-model/login/class/LoginViewModel";
 
 const LoginComponent: React.FC = () => {
   const router = useRouter();

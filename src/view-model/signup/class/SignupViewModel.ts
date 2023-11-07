@@ -1,4 +1,4 @@
-import UserService from "@/model/service/UserService";
+import UserService from "@/model/service/class/UserService";
 
 class SignUpViewModel {
   private email: string;

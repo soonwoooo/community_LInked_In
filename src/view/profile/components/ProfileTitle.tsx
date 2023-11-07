@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import UserProfileViewModel from "@/view-model/userProfile/UserProfileViewModel";
+import ProfileViewModel from "@/view-model/profile/class/ProfileViewModel";
 
 const ProfileTitle: React.FC = () => {
   const [data, setData] = useState<any | null>(null);
@@ -10,7 +10,7 @@ const ProfileTitle: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getProfile = new UserProfileViewModel();
+        const getProfile = new ProfileViewModel();
         const titleData = await getProfile.getProfileTitleData();
         setData(titleData);
       } catch (error) {

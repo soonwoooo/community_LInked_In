@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-import SignUpViewModel from "@/view-model/signup/SignupViewModel";
+import SignUpViewModel from "@/view-model/signup/class/SignupViewModel";
 
 const SignupComponent = () => {
   const router = useRouter();
