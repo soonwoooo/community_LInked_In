@@ -10,7 +10,7 @@ export class Profile implements ProfileInterface {
     this.id = id;
     this.message = message;
     this.category = category;
-    this.data = data; // Education 데이터를 배열에 할당
+    this.data = data;
   }
 }
 

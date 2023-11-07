@@ -32,8 +32,8 @@ export class ProfileService implements ProfileServiceInterface {
     const result = new Profile(
       response.data.id,
       response.data.message,
-      response.data.category
-      // response.data.data
+      response.data.category,
+      response.data.data
     );
 
     return result;

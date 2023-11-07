@@ -25,7 +25,7 @@ const ProfileExperience = () => {
   if (data === null) {
     return;
   }
-  console.log(data);
+  console.log("data", data);
   return (
     <>
       {data.data?.map((item: any) => (
