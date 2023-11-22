@@ -7,7 +7,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     display:flex;
-    justify-content: center;
+align-items: center;
+    flex-direction: column;
     background-color: #F7F9FB;
   }
 

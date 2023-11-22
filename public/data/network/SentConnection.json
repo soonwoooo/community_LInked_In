@@ -1,0 +1,26 @@
+[
+  {
+    "id": 3,
+    "isAccepted": false,
+    "message": "나는 멍청하다",
+    "createdAt": "2023-11-10T05:39:27.610Z",
+    "updatedAt": "2023-11-10T05:39:27.610Z",
+    "connectedUser": {
+      "id": 1,
+      "name": "박인국",
+      "profileImage": ""
+    }
+  },
+  {
+    "id": 4,
+    "isAccepted": false,
+    "message": "나는 똑똑하다",
+    "createdAt": "2023-11-10T05:39:27.610Z",
+    "updatedAt": "2023-11-10T05:39:27.610Z",
+    "connectedUser": {
+      "id": 1,
+      "name": "박경재",
+      "profileImage": ""
+    }
+  }
+]

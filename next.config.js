@@ -6,7 +6,26 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["upload.wikimedia.org"], // 이미지를 불러올 도메인을 추가합니다.
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "**.example.com",
+    //   },
+    // ],
+    domains: [
+      "littledeep.com",
+      "picsum.photos",
+      "loremflickr.com",
+      "upload.wikimedia.org",
+      "cdn.dtnews24.com",
+      "mblogthumb-phinf.pstatic.net",
+      "images.unsplash.com",
+      "static.wixstatic.com",
+      "search.pstatic.net",
+      "avatars.githubusercontent.com",
+      "cloudflare-ipfs.com",
+      "",
+    ],
   },
 };
 

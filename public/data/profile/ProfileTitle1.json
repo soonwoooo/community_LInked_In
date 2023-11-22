@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "profileBackImage": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "location": "서울시",
+  "address": "동작구 49길",
+  "jobDescription": "저는 프론트엔드 개발자에요",
+  "about": "저는 위코드를 졸업했습니다. 그 누구도 저를 막을 수 없죠",
+  "user": {
+    "id": 1,
+    "email": "test7@test.co.kr",
+    "name": "권순우",
+    "profileImage": "https://images.unsplash.com/photo-1474447976065-67d23accb1e3?q=80&w=2785&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+}

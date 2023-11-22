@@ -1,0 +1,32 @@
+[
+  {
+    "imgSrc": "/images/careerImg.png",
+    "position": "개발자",
+    "titleSub": "Self-employed",
+    "periodStart": "2023-09-09",
+    "periodEnd": "2023-09-11",
+    "description": "사업 진행",
+    "id": 1,
+    "experienceCompany": {
+      "id": 2,
+      "name": "두번째",
+      "logo": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "location": "강원도"
+    }
+  },
+  {
+    "imgSrc": "/images/careerImg.png",
+    "position": "요리사",
+    "titleSub": "Upwork",
+    "periodStart": "2023-11-01",
+    "periodEnd": "2023-11-03",
+    "description": "New experience with Upwork system. Work in next areas: UX/UI design, graphic design, interaction design, UX research.",
+    "id": 2,
+    "experienceCompany": {
+      "id": 3,
+      "name": "두번째",
+      "logo": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "location": "부산"
+    }
+  }
+]

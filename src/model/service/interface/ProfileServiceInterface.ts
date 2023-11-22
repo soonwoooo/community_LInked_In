@@ -1,52 +1,70 @@
-import { Profile } from "@/model/entity/profile/Profile";
-
 export interface ProfileServiceInterface {
-  getTitle: () => Promise<ProfileTitleData>;
-  getExperience: () => Promise<Profile>;
-  getEducation: () => Promise<Profile>;
+  getTitle: (id: number) => Promise<ProfileTitleInterface>;
+  getProjects: (id: number) => Promise<ProfileProjectsInterface[]>;
+  getExperience: (id: number) => Promise<ProfileExperienceInterface[]>;
+  getEducation: (id: number) => Promise<ProfileEducationInterface[]>;
+  // postTitle: (id: number) => Promise<PutTitleInterface>;
 }
 
-export interface ProfileTitleData {
+export interface ProfileTitleInterface {
   id: number;
-  profileImage: string;
-  name: string;
+  profileBackImage: string;
   location: string;
+  address: string;
   jobDescription: string;
-  connections: number;
+  about: string;
+  user: {
+    id: number;
+    email: string;
+    name: string;
+    profileImage: string;
+  };
 }
 
-export interface ExperienceInsideData {
-  imgSrc: string;
+export interface ProfileProjectsInterface {
+  id: number;
+  coverImage: {
+    id: number;
+    image: string;
+  };
   title: string;
-  titleSub: string;
-  periodStart: number;
-  periodEnd: number;
-  detail: string;
-  id: number;
-  workSpace: string;
+  description: string;
+  startDate: string;
+  endDate: string | null;
 }
 
-export interface EducationInsideData {
+export interface ProfileExperienceInterface {
   imgSrc: string;
-  title: string;
-  titleSub: string;
-  periodStart: number;
-  periodEnd: number;
-  detail: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  description: string;
   id: number;
-  workSpace: string;
+  experienceCompany: {
+    id: number;
+    name: string;
+    logo: string;
+    location: string;
+  };
 }
 
-export interface ExperienceData {
+export interface ProfileEducationInterface {
   id: number;
-  message: string;
-  category: string;
-  data: ExperienceInsideData[];
+  course: string;
+  description: string;
+  startDate: string;
+  endDate: string | null;
+  educationInstitute: {
+    id: number;
+    name: string;
+    logo: string;
+  };
 }
 
-export interface EducationData {
-  id: number;
-  message: string;
-  category: string;
-  data: EducationInsideData[];
-}
+// export interface PutTitleInterface {}
+
+// export interface PutProjectsInterface {}
+
+// export interface PutExperienceInterface {}
+
+// export interface PutEducationInterface {}

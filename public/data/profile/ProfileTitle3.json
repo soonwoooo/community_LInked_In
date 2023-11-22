@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "profileBackImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "location": "구로디지털단지",
+  "address": "몰라유",
+  "jobDescription": "저는 풀스택 개발자에요",
+  "about": "안녕하세요. 개발호소인입니다.",
+  "user": {
+    "id": 9,
+    "email": "test7@test.co.kr",
+    "name": "박경재",
+    "profileImage": "https://images.unsplash.com/photo-1474447976065-67d23accb1e3?q=80&w=2785&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+}

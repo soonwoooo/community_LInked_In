@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "isAccepted": true,
+    "message": "맛집 알려줄게",
+    "createdAt": "2023-11-09T03:10:31.838Z",
+    "updatedAt": "2023-11-09T07:11:04.000Z",
+    "connectedUser": {
+      "id": 1,
+      "name": "박민재",
+      "profileImage": ""
+    }
+  },
+  {
+    "id": 2,
+    "isAccepted": true,
+    "message": "햄버거 좋아요",
+    "createdAt": "2023-11-09T04:47:01.682Z",
+    "updatedAt": "2023-11-10T02:44:24.585Z",
+    "connectedUser": {
+      "id": 3,
+      "name": "홍지수",
+      "profileImage": ""
+    }
+  },
+  {
+    "id": 1,
+    "isAccepted": true,
+    "message": "맛집 알려줄게",
+    "createdAt": "2023-11-09T03:10:31.838Z",
+    "updatedAt": "2023-11-09T07:11:04.000Z",
+    "connectedUser": {
+      "id": 1,
+      "name": "박민재",
+      "profileImage": ""
+    }
+  },
+  {
+    "id": 2,
+    "isAccepted": true,
+    "message": "햄버거 좋아요",
+    "createdAt": "2023-11-09T04:47:01.682Z",
+    "updatedAt": "2023-11-10T02:44:24.585Z",
+    "connectedUser": {
+      "id": 3,
+      "name": "홍지수",
+      "profileImage": ""
+    }
+  }
+]

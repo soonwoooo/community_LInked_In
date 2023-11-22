@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "content": "배고파요",
+    "createdAt": "2023-11-07T00:50:12.561Z",
+    "updatedAt": "2023-11-07T00:50:12.570Z",
+    "author": {
+      "id": 2,
+      "name": "User",
+      "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+      "job": "나다"
+    },
+    "likes": [
+      {
+        "id": 10,
+        "createdAt": "2023-11-06T08:49:14.816Z"
+      }
+    ],
+    "images": [
+      {
+        "id": 1,
+        "image": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg"
+      }
+    ],
+    "video": null,
+    "comments": [
+      {
+        "id": 1000,
+        "content": "1번댓글의 1번",
+        "createdAt": "2023-11-06T08:59:20.816Z",
+        "updatedAt": "2023-11-06T08:59:20.816Z",
+        "commenter": {
+          "id": 500,
+          "name": "User",
+          "profileImage": "",
+          "job": "1번 직업"
+        }
+      },
+      {
+        "id": 16,
+        "content": "1번댓글의 2번",
+        "createdAt": "2023-11-06T08:59:20.467Z",
+        "updatedAt": "2023-11-06T08:59:20.467Z",
+        "commenter": {
+          "id": 2,
+          "name": "2번유저",
+          "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+          "job": "2번 직업"
+        }
+      },
+      {
+        "id": 15,
+        "content": "1번댓글의 3번",
+        "createdAt": "2023-11-06T08:59:20.057Z",
+        "updatedAt": "2023-11-06T08:59:20.057Z",
+        "commenter": {
+          "id": 3,
+          "name": "3번유저",
+          "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+          "job": "1번 직업"
+        }
+      }
+    ],
+    "likesCount": 1,
+    "commentsCount": 3
+  },
+  {
+    "id": 2,
+    "content": "2번목",
+    "createdAt": "2023-11-07T00:50:12.561Z",
+    "updatedAt": "2023-11-07T00:50:12.570Z",
+    "author": {
+      "id": 1,
+      "name": "1번유저",
+      "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+      "job": "2목"
+    },
+    "likes": [
+      {
+        "id": 10,
+        "createdAt": "2023-11-06T08:49:14.816Z"
+      }
+    ],
+    "images": [],
+    "video": null,
+    "comments": [
+      {
+        "id": 17,
+        "content": "cccccc",
+        "createdAt": "2023-11-06T08:59:20.816Z",
+        "updatedAt": "2023-11-06T08:59:20.816Z",
+        "commenter": {
+          "id": 2,
+          "name": "User",
+          "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+          "job": "2번 직업"
+        }
+      },
+      {
+        "id": 15,
+        "content": "cccccc",
+        "createdAt": "2023-11-06T08:59:20.057Z",
+        "updatedAt": "2023-11-06T08:59:20.057Z",
+        "commenter": {
+          "id": 2,
+          "name": "User",
+          "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+          "job": "2번 직업"
+        }
+      }
+    ],
+    "likesCount": 1,
+    "commentsCount": 2
+  },
+  {
+    "id": 3,
+    "content": "3번",
+    "createdAt": "2023-11-07T00:50:12.561Z",
+    "updatedAt": "2023-11-07T00:50:12.570Z",
+    "author": {
+      "id": 3,
+      "name": "3번유저",
+      "profileImage": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg",
+      "job": "백수"
+    },
+    "likes": [
+      {
+        "id": 10,
+        "createdAt": "2023-11-06T08:49:14.816Z"
+      }
+    ],
+    "images": [],
+    "video": null,
+    "comments": [],
+    "likesCount": 1,
+    "commentsCount": 0
+  }
+]

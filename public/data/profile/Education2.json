@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "course": "올 문과",
+    "description": "에서 공대 진학",
+    "startDate": "2003-03-01",
+    "endDate": "2006-02-28",
+    "educationInstitute": {
+      "id": 1,
+      "name": "운천고등학교",
+      "logo": "https://cdn.dtnews24.com/news/photo/201705/102022_422465.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "course": "경영학과",
+    "description": "휴학 한 번 없이 졸업",
+    "startDate": "2006-03-01",
+    "endDate": "2012-02-28",
+    "educationInstitute": {
+      "id": 2,
+      "name": "숭실대학교",
+      "logo": "https://mblogthumb-phinf.pstatic.net/MjAxODA4MzBfMjEw/MDAxNTM1NjIyNjA5NDYx.V_Zb2yW-y7KyAfZ19IStAfAXew3jjEvuQb7DkyNaIrsg.st7sAayHzkCyi44FGTdcAEUcPiF-42pGE6zJ7oK58OMg.PNG.math-min/%EC%A4%91%EB%A6%AC%EC%A4%91_%EB%A1%9C%EA%B3%A02.png?type=w800"
+    }
+  },
+  {
+    "id": 7,
+    "course": "1-1, 2-6, 3-7, 4-7, 5-8, 6-8",
+    "description": "성룡",
+    "startDate": "1994-03-01",
+    "endDate": "2000-02-01",
+    "educationInstitute": {
+      "id": 5,
+      "name": "대전_성룡초교",
+      "logo": "https://mblogthumb-phinf.pstatic.net/MjAxODA4MzBfMjEw/MDAxNTM1NjIyNjA5NDYx.V_Zb2yW-y7KyAfZ19IStAfAXew3jjEvuQb7DkyNaIrsg.st7sAayHzkCyi44FGTdcAEUcPiF-42pGE6zJ7oK58OMg.PNG.math-min/%EC%A4%91%EB%A6%AC%EC%A4%91_%EB%A1%9C%EA%B3%A02.png?type=w800"
+    }
+  }
+]
