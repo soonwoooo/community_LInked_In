@@ -7,12 +7,12 @@ const FeedCommentModal: React.FC<{
   id: number;
   commentId: number;
   deleteComment: any;
-  feedId: any;
+  feedId: number;
 }> = ({
   id,
-  //commenter안에 id
+
   commentId,
-  //comment게시글의 id
+
   deleteComment,
   feedId,
 }) => {
@@ -34,15 +34,6 @@ const FeedCommentModal: React.FC<{
       <ContentWrapper>
         {id === localId ? (
           <IconContainer>
-            <IconWrapper>
-              <Image
-                alt="수정 아이콘"
-                src="/images/pencil.png"
-                width={20}
-                height={20}
-              />
-              수정
-            </IconWrapper>
             <IconWrapper onClick={handleDelete}>
               <Image
                 alt="삭제 아이콘"

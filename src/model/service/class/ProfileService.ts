@@ -6,10 +6,31 @@ import BASE_API from "@/model/config";
 
 export class ProfileService {
   static async getTitle(
-    id: number
+    profileId: number
   ): Promise<ProfileInterface.ProfileTitleInterface> {
     const response: AxiosResponse<ProfileServiceInterface.ProfileTitleInterface> =
-      await axios.get(`${BASE_API}/profile/${id}`, {
+      await axios.get(`/profile/${profileId}`, {
+        baseURL: `${BASE_API}`,
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
+    const result = new Profile.ProfileTitleImp(
+      response.data.id,
+      response.data.profileBackImage,
+      response.data.location,
+      response.data.address,
+      response.data.jobDescription,
+      response.data.about,
+      response.data.user
+    );
+    return result;
+  }
+
+  static async getMyTitle(): Promise<ProfileInterface.ProfileTitleInterface> {
+    const response: AxiosResponse<ProfileServiceInterface.ProfileTitleInterface> =
+      await axios.get(`/profile/${localStorage.getItem("profileId")}`, {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -27,14 +48,15 @@ export class ProfileService {
   }
 
   static async getProjects(
-    id?: number
+    profileId: number
   ): Promise<ProfileInterface.ProfileProjectsInterface[]> {
     const response: AxiosResponse<
       ProfileServiceInterface.ProfileProjectsInterface[]
     > = await axios.get(
-      `${BASE_API}/profile/${id}/project`,
+      `/profile/${profileId}/project/`,
 
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -56,12 +78,46 @@ export class ProfileService {
     return result;
   }
 
-  static async getExperience(
+  static async getOneProject(
     id: number
+  ): Promise<ProfileInterface.ProfileProjectsInterface | null> {
+    const response: AxiosResponse<ProfileServiceInterface.ProfileProjectsInterface> =
+      await axios.get(
+        `/profile/${localStorage.getItem("profileId")}/project/${id}`,
+        {
+          baseURL: `${BASE_API}`,
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+    if (!response.data) {
+      return null;
+    }
+
+    const project = response.data;
+
+    const result: ProfileInterface.ProfileProjectsInterface =
+      new Profile.ProfileProjectsImp(
+        project.id,
+        project.coverImage,
+        project.title,
+        project.description,
+        project.startDate,
+        project.endDate
+      );
+
+    return result;
+  }
+
+  static async getExperience(
+    profileId: number
   ): Promise<ProfileInterface.ProfileExperienceInterface[]> {
     const response: AxiosResponse<
       ProfileServiceInterface.ProfileExperienceInterface[]
-    > = await axios.get(`${BASE_API}/profile/${id}/experience`, {
+    > = await axios.get(`/profile/${profileId}/experience`, {
+      baseURL: `${BASE_API}`,
       headers: {
         authorization: localStorage.getItem("token"),
       },
@@ -70,7 +126,6 @@ export class ProfileService {
     const result = response.data.map(
       (experience) =>
         new Profile.ProfileExperienceImp(
-          experience.imgSrc,
           experience.position,
           experience.startDate,
           experience.endDate,
@@ -83,12 +138,46 @@ export class ProfileService {
     return result;
   }
 
-  static async getEducation(
+  static async getOneExperience(
     id: number
+  ): Promise<ProfileInterface.ProfileExperienceInterface | null> {
+    const response: AxiosResponse<ProfileServiceInterface.ProfileExperienceInterface> =
+      await axios.get(
+        `/profile/${localStorage.getItem("profileId")}/experience/${id}`,
+        {
+          baseURL: `${BASE_API}`,
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+    if (!response.data) {
+      return null;
+    }
+
+    const experience = response.data;
+
+    const result: ProfileInterface.ProfileExperienceInterface =
+      new Profile.ProfileExperienceImp(
+        experience.position,
+        experience.startDate,
+        experience.endDate,
+        experience.description,
+        experience.id,
+        experience.experienceCompany
+      );
+
+    return result;
+  }
+
+  static async getEducation(
+    profileId: number
   ): Promise<ProfileInterface.ProfileEducationInterface[]> {
     const response: AxiosResponse<
       ProfileServiceInterface.ProfileEducationInterface[]
-    > = await axios.get(`${BASE_API}/profile/${id}/education`, {
+    > = await axios.get(`/profile/${profileId}/education`, {
+      baseURL: `${BASE_API}`,
       headers: {
         authorization: localStorage.getItem("token"),
       },
@@ -109,9 +198,42 @@ export class ProfileService {
     return result;
   }
 
+  static async getOneEducation(
+    id: number
+  ): Promise<ProfileInterface.ProfileEducationInterface | null> {
+    const response: AxiosResponse<ProfileServiceInterface.ProfileEducationInterface> =
+      await axios.get(
+        `/profile/${localStorage.getItem("profileId")}/education/${id}`,
+        {
+          baseURL: `${BASE_API}`,
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+    if (!response.data) {
+      return null;
+    }
+
+    const education = response.data;
+
+    const result: ProfileInterface.ProfileEducationInterface =
+      new Profile.ProfileEducationImp(
+        education.id,
+        education.course,
+        education.description,
+        education.startDate,
+        education.endDate,
+        education.educationInstitute
+      );
+
+    return result;
+  }
+
   static async putTitle(userInfo: any): Promise<any> {
     const response: AxiosResponse<any> = await axios.put(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}`,
+      `/profile/${localStorage.getItem("profileId")}`,
       {
         jobDescription: userInfo.jobDescription,
         location: userInfo.location,
@@ -120,6 +242,7 @@ export class ProfileService {
         about: userInfo.about,
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -130,7 +253,7 @@ export class ProfileService {
 
   static async makeProject(userInfo: any): Promise<any> {
     const response: AxiosResponse<any> = await axios.post(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}/project`,
+      `/profile/${localStorage.getItem("profileId")}/project`,
       {
         title: userInfo.title,
         description: userInfo.description,
@@ -139,6 +262,7 @@ export class ProfileService {
         projectImages: [userInfo.image],
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -149,9 +273,10 @@ export class ProfileService {
 
   static async removeProject(id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.delete(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}/project/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/project/${id}`,
 
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -162,7 +287,7 @@ export class ProfileService {
 
   static async updateProject(userInfo: any, id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.put(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}/project/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/project/${id}`,
       {
         title: userInfo.title,
         description: userInfo.description,
@@ -171,6 +296,7 @@ export class ProfileService {
         projectImages: [userInfo.image],
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -181,7 +307,7 @@ export class ProfileService {
 
   static async makeExperience(userInfo: any): Promise<any> {
     const response: AxiosResponse<any> = await axios.post(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}/experience`,
+      `/profile/${localStorage.getItem("profileId")}/experience`,
       {
         position: userInfo.position,
         description: userInfo.description,
@@ -194,6 +320,7 @@ export class ProfileService {
         },
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -204,11 +331,10 @@ export class ProfileService {
 
   static async removeExperience(id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.delete(
-      `${BASE_API}/profile/${localStorage.getItem(
-        "profileId"
-      )}/experience/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/experience/${id}`,
 
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -220,9 +346,7 @@ export class ProfileService {
 
   static async updateExperience(userInfo: any, id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.put(
-      `${BASE_API}/profile/${localStorage.getItem(
-        "profileId"
-      )}/experience/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/experience/${id}`,
       {
         position: userInfo.position,
         description: userInfo.description,
@@ -235,6 +359,7 @@ export class ProfileService {
         },
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -245,7 +370,7 @@ export class ProfileService {
 
   static async makeEducation(userInfo: any): Promise<any> {
     const response: AxiosResponse<any> = await axios.post(
-      `${BASE_API}/profile/${localStorage.getItem("profileId")}/education`,
+      `/profile/${localStorage.getItem("profileId")}/education`,
       {
         course: userInfo.course,
         description: userInfo.description,
@@ -257,6 +382,7 @@ export class ProfileService {
         },
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -267,11 +393,10 @@ export class ProfileService {
 
   static async removeEducation(id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.delete(
-      `${BASE_API}/profile/${localStorage.getItem(
-        "profileId"
-      )}/education/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/education/${id}`,
 
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -282,9 +407,7 @@ export class ProfileService {
 
   static async updateEducation(userInfo: any, id: number): Promise<any> {
     const response: AxiosResponse<any> = await axios.put(
-      `${BASE_API}/profile/${localStorage.getItem(
-        "profileId"
-      )}/education/${id}`,
+      `/profile/${localStorage.getItem("profileId")}/education/${id}`,
       {
         course: userInfo.course,
         description: userInfo.description,
@@ -296,6 +419,7 @@ export class ProfileService {
         },
       },
       {
+        baseURL: `${BASE_API}`,
         headers: {
           authorization: localStorage.getItem("token"),
         },

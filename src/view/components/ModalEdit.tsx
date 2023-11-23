@@ -2,14 +2,13 @@
 
 import styled from "styled-components";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProfileViewModel from "@/view-model/profile/class/ProfileViewModel";
 
 interface ModalProps {
   newBtn: boolean;
   deleteBtn: boolean;
   title: string;
-  data?: any;
   layout: string;
   click?: any;
   id?: number;
@@ -19,12 +18,85 @@ const ModalEdit: React.FC<ModalProps> = ({
   newBtn,
   deleteBtn,
   title,
-  data,
   layout,
   click,
   id,
 }) => {
   const [modalCheck, setModalCheck] = useState<boolean>(false);
+  const [data, setData] = useState<any | null>(null);
+
+  const editClick = async (ids: number) => {
+    if (layout === "title") {
+      const getData = await ProfileViewModel.getMyProfileTitleData();
+
+      setUserInfo(getData);
+    } else if (layout === "title_null") {
+      setUserInfo({
+        jobDescription: "",
+        location: "",
+        address: "",
+        profileBackImage: "",
+        about: "",
+      });
+    } else if (layout === "projects") {
+      const getData = await ProfileViewModel.getOneProjectData(ids);
+      setUserInfo({
+        image: getData.coverImage.image,
+        title: getData.title,
+        description: getData.description,
+        startDate: getData.startDate,
+        endDate: getData.endDate,
+      });
+    } else if (layout === "projects_null") {
+      setUserInfo({
+        image: "",
+        title: "",
+        description: "",
+        startDate: "",
+        endDate: "",
+      });
+    } else if (layout === "experience") {
+      const getData = await ProfileViewModel.getOneProfileExperience(ids);
+      setUserInfo({
+        position: getData.position,
+        companyName: getData.experienceCompany.name,
+        location: getData.experienceCompany.location,
+        logoUrl: getData.experienceCompany.logo,
+        startDate: getData.startDate,
+        endDate: getData.endDate,
+        description: getData.description,
+      });
+    } else if (layout === "experience_null") {
+      setUserInfo({
+        position: "",
+        companyName: "",
+        location: "",
+        logoUrl: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+      });
+    } else if (layout === "education") {
+      const getData = await ProfileViewModel.getOneProfileEducation(ids);
+      setUserInfo({
+        name: getData.educationInstitute.name,
+        description: getData.description,
+        logoUrl: getData.educationInstitute.logo,
+        course: getData.course,
+        startDate: getData.startDate,
+        endDate: getData.endDate,
+      });
+    } else if (layout === "education_null") {
+      setUserInfo({
+        name: "",
+        description: "",
+        logoUrl: "",
+        course: "",
+        startDate: "",
+        endDate: "",
+      });
+    }
+  };
 
   const clickModal = (value: boolean) => {
     setModalCheck(value);
@@ -67,7 +139,7 @@ const ModalEdit: React.FC<ModalProps> = ({
 
   const handleUserInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
+    setUserInfo((prevUserInfo) => ({ ...prevUserInfo, [name]: value }));
   };
 
   let userInfoInitialState;
@@ -75,11 +147,11 @@ const ModalEdit: React.FC<ModalProps> = ({
   switch (layout) {
     case "title":
       userInfoInitialState = {
-        jobDescription: data.jobDescription,
-        location: data.location,
-        address: data.address,
-        profileBackImage: data.profileBackImage,
-        about: data.about,
+        jobDescription: data?.jobDescription,
+        location: data?.location,
+        address: data?.address,
+        profileBackImage: data?.profileBackImage,
+        about: data?.about,
       };
       break;
     case "title_null":
@@ -157,7 +229,7 @@ const ModalEdit: React.FC<ModalProps> = ({
   }
 
   const [userInfo, setUserInfo] = useState(userInfoInitialState);
-  const profileId = localStorage.getItem("profileId");
+
   const handleRemoveClick = async () => {
     try {
       if (layout === "projects") {
@@ -177,11 +249,11 @@ const ModalEdit: React.FC<ModalProps> = ({
   const handleMakeClick = async () => {
     try {
       if (layout === "projects_null") {
-        await ProfileViewModel.makeProject(userInfo, id);
+        await ProfileViewModel.makeProject(userInfo);
       } else if (layout === "experience_null") {
-        await ProfileViewModel.makeExperience(userInfo, id);
+        await ProfileViewModel.makeExperience(userInfo);
       } else if (layout === "education_null") {
-        await ProfileViewModel.makeEducation(userInfo, id);
+        await ProfileViewModel.makeEducation(userInfo);
       }
     } catch (error) {
       console.error("오류 발생:", error);
@@ -215,6 +287,8 @@ const ModalEdit: React.FC<ModalProps> = ({
     "education_null",
   ];
 
+  console.log("확인", userInfo);
+
   return (
     <ModalEditStyle>
       <ModalBox active={modalCheck}>
@@ -226,6 +300,7 @@ const ModalEdit: React.FC<ModalProps> = ({
             width={40}
             height={40}
             onClick={() => {
+              setData(null);
               clickModal(false);
             }}
           />
@@ -236,11 +311,12 @@ const ModalEdit: React.FC<ModalProps> = ({
                 <InputBox key={name}>
                   <Title>{label}</Title>
                   <InputStyle
-                    defaultValue={
-                      nullLayouts.includes(layout)
-                        ? ""
-                        : getFieldValue(data, key)
-                    }
+                    value={userInfo[name]}
+                    // defaultValue={
+                    //   nullLayouts.includes(layout) || data == null
+                    //     ? ""
+                    //     : getFieldValue(data, key)
+                    // }
                     name={name}
                     type={type}
                     placeholder={placeholder}
@@ -281,6 +357,7 @@ const ModalEdit: React.FC<ModalProps> = ({
         width={20}
         height={20}
         onClick={() => {
+          editClick(id);
           clickModal(true);
         }}
       />

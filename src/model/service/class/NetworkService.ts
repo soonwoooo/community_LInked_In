@@ -12,7 +12,6 @@ export class NetworkService {
     const token = localStorage.getItem("token");
     const response: AxiosResponse<
       NetworkServiceInterface.getRecievedConnectionData[]
-      // > = await axios.get(`/data/network/RecievedConnection.json`);
     > = await axios.get(`/connection/received`, {
       baseURL: `${BASE_API}`,
       headers: {
@@ -37,7 +36,6 @@ export class NetworkService {
     const token = localStorage.getItem("token");
     const response: AxiosResponse<
       NetworkServiceInterface.getSentConnectionData[]
-      // > = await axios.get(`/data/network/SentConnection.json`);
     > = await axios.get(`/connection/sent`, {
       baseURL: `${BASE_API}`,
       headers: {
@@ -62,8 +60,6 @@ export class NetworkService {
     const token = localStorage.getItem("token");
     const response: AxiosResponse<
       NetworkServiceInterface.getMyConnectionData[]
-
-      // > = await axios.get(`/data/network/MyConnection.json`);
     > = await axios.get(`/connection/connected`, {
       baseURL: `${BASE_API}`,
       headers: {

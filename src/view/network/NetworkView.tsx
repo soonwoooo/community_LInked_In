@@ -6,9 +6,9 @@ import styled from "styled-components";
 import NetworkRecentConnectView from "./components/NetworkMyConnectView";
 import NetworkViewModel from "@/view-model/network/class/NetworkViewModel";
 const NetworkView = () => {
-  const [recievedData, setRecievedData] = useState<any | null>(null);
-  const [sentData, setSentData] = useState<any | null>(null);
-  const [myConnectionData, setMyConnectionData] = useState<any | null>(null);
+  const [recievedData, setRecievedData] = useState<any>([]);
+  const [sentData, setSentData] = useState<any>([]);
+  const [myConnectionData, setMyConnectionData] = useState<any>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,8 @@ const NetworkView = () => {
 
   const postAccept = (id: number) => {
     NetworkViewModel.RecievedAccept(id).then((res) => {
-      setRecievedData(res);
+      setRecievedData(res.received);
+      setMyConnectionData(res.connected);
     });
   };
 

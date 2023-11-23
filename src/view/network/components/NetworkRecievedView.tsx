@@ -37,51 +37,52 @@ const NetworkRecievedView: React.FC<{
     },
   ];
 
-  return (
-    <div>
-      <PaddingWrapper>
-        <ButtonContainer>
-          {BUTTON_DATA.map(({ text, onClick }, idx) => (
-            <Button
-              key={text}
-              onClick={onClick}
-              $isSelected={idx === selectedIdx}
-            >
-              {text}
-            </Button>
-          ))}
-        </ButtonContainer>
-        <NewConnectionWrapper>
-          <StyleWrapper>
-            <NetworkConnectionUnderLine />
-            {!isSentData ? (
-              <NewConnectionLetter>
-                <Black>YOU HAVE</Black>
-                <Blue>{receivedData.length} NEW CONNECTIONS</Blue>
-              </NewConnectionLetter>
-            ) : (
-              <NewConnectionLetter>
-                <Black>YOU SEND</Black>
-                <Blue>{sentData.length} CONNECTIONS</Blue>
-              </NewConnectionLetter>
-            )}
-            <NetworkConnectionUnderLine />
-          </StyleWrapper>
-        </NewConnectionWrapper>
-      </PaddingWrapper>
+  if (receivedData)
+    return (
       <div>
-        {(isSentData ? sentData : receivedData).map((data: any) => (
-          <NetworkRecievedItem
-            data={data}
-            isSentData={isSentData}
-            postAccept={postAccept}
-            postdecline={postdecline}
-            postRecievedDecline={postRecievedDecline}
-          />
-        ))}
+        <PaddingWrapper>
+          <ButtonContainer>
+            {BUTTON_DATA.map(({ text, onClick }, idx) => (
+              <Button
+                key={text}
+                onClick={onClick}
+                $isSelected={idx === selectedIdx}
+              >
+                {text}
+              </Button>
+            ))}
+          </ButtonContainer>
+          <NewConnectionWrapper>
+            <StyleWrapper>
+              <NetworkConnectionUnderLine />
+              {!isSentData ? (
+                <NewConnectionLetter>
+                  <Black>YOU HAVE</Black>
+                  <Blue>{receivedData.length} NEW CONNECTIONS</Blue>
+                </NewConnectionLetter>
+              ) : (
+                <NewConnectionLetter>
+                  <Black>YOU SEND</Black>
+                  <Blue>{sentData.length} CONNECTIONS</Blue>
+                </NewConnectionLetter>
+              )}
+              <NetworkConnectionUnderLine />
+            </StyleWrapper>
+          </NewConnectionWrapper>
+        </PaddingWrapper>
+        <div>
+          {(isSentData ? sentData : receivedData).map((data: any) => (
+            <NetworkRecievedItem
+              data={data}
+              isSentData={isSentData}
+              postAccept={postAccept}
+              postdecline={postdecline}
+              postRecievedDecline={postRecievedDecline}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default NetworkRecievedView;

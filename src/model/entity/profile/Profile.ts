@@ -74,7 +74,6 @@ export class ProfileProjectsImp
 export class ProfileExperienceImp
   implements ProfileInterface.ProfileExperienceInterface
 {
-  imgSrc: string;
   position: string;
   startDate: string;
   endDate: string;
@@ -87,7 +86,6 @@ export class ProfileExperienceImp
     location: string;
   };
   constructor(
-    imgSrc: string,
     position: string,
     startDate: string,
     endDate: string,
@@ -100,7 +98,6 @@ export class ProfileExperienceImp
       location: string;
     }
   ) {
-    this.imgSrc = imgSrc;
     this.position = position;
     this.startDate = startDate;
     this.endDate = endDate;

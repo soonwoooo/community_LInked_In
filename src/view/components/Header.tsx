@@ -8,6 +8,7 @@ import HeaderViewModel from "@/view-model/header/class/HeaderViewModel";
 import { ChangeEvent } from "react";
 const Header = () => {
   const router = useRouter();
+
   const handleRouting = (path: string) => {
     router.push(path);
   };
@@ -252,6 +253,7 @@ const SearchIcon = styled(Image)`
 `;
 const SearchInput = styled.input`
   margin-left: 20px;
+
   font-family: Gotham Pro;
   font-size: 16px;
   font-style: normal;

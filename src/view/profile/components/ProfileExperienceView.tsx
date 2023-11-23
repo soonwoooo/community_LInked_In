@@ -93,6 +93,7 @@ const CareerPic = styled(Image)`
   background-color: #ed8f03;
   display: block;
   margin-right: 16px;
+  object-fit: cover;
 `;
 
 const CareerInfoBox = styled.div``;

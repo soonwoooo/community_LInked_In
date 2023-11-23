@@ -1,8 +1,10 @@
 import { FeedService } from "@/model/service/class/FeedService";
 import * as FeedViewModelInterface from "../interface/FeedViewModelInterface";
-import { AxiosError, AxiosResponse } from "axios";
 
 class FeedViewModel {
+  static setSearchParam(searchParams: URLSearchParams) {
+    FeedService.setSearchParam(searchParams);
+  }
   static async postFeedData(content: string, images: string | null) {
     try {
       const response = await FeedService.postFeed(content, images);
@@ -72,11 +74,11 @@ class FeedViewModel {
     }
   }
 
-  static async getFeedListData(
-    searchValue
-  ): Promise<FeedViewModelInterface.GetFeedListData[]> {
+  static async getFeedListData(): Promise<
+    FeedViewModelInterface.GetFeedListData[]
+  > {
     try {
-      const response = FeedService.getFeedList(searchValue);
+      const response = FeedService.getFeedList();
 
       return response;
     } catch (error) {
@@ -110,13 +112,9 @@ class FeedViewModel {
 
       if ((response.status = 201)) {
         alert("친구 신청을 보냈습니다");
-
         return response.data;
       }
-    } catch (error: any) {
-      // if (error.response.status === 400) {
-      //   alert("이미 친구 신청을 보냈습니다");
-      // }
+    } catch (error) {
       if (error.response.data.message === "DUPLICATE_USER_CONNECTION") {
         alert("이미 요청을 보낸 대상입니다");
       }
@@ -134,6 +132,19 @@ class FeedViewModel {
       throw error;
     }
   }
+  // static async getSearchListData(searchValue: string): // searchValue
+  // Promise<FeedViewModelInterface.GetFeedListData[]> {
+  //   try {
+  //     const response = FeedService.getSearchList(searchValue);
+  //     if (response.status >= 200 && response.status < 300) {
+  //       const result = await this.getSearchListData(searchValue);
+  //       return result;
+  //     }
+  //     return response;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 }
 
 export default FeedViewModel;

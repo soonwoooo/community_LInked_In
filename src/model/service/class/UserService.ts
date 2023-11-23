@@ -9,11 +9,17 @@ export class UserService {
     name: string
   ): Promise<AxiosResponse<UserServiceInterface.SignUpServiceInterface>> {
     const response: AxiosResponse<UserServiceInterface.SignUpServiceInterface> =
-      await axios.post(`${BASE_API}/user/signup`, {
-        email,
-        password,
-        name,
-      });
+      await axios.post(
+        `/user/signup`,
+        {
+          email,
+          password,
+          name,
+        },
+        {
+          baseURL: `${BASE_API}`,
+        }
+      );
     return response;
   }
 
@@ -22,24 +28,27 @@ export class UserService {
     password: string
   ): Promise<AxiosResponse<UserServiceInterface.LoginServiceInterface>> {
     const response: AxiosResponse<UserServiceInterface.LoginServiceInterface> =
-      await axios.post(`${BASE_API}/user/login`, {
-        email,
-        password,
-      });
+      await axios.post(
+        `/user/login`,
+        {
+          email,
+          password,
+        },
+        {
+          baseURL: `${BASE_API}`,
+        }
+      );
     return response;
   }
 
   static async CheckProfileId(): Promise<any> {
     const response: AxiosResponse<UserServiceInterface.SignUpServiceInterface> =
-      await axios.get(
-        `${BASE_API}/profile/profileId`,
-
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
-      );
+      await axios.get(`/profile/profileId`, {
+        baseURL: `${BASE_API}`,
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
 
     return response;
   }
@@ -47,10 +56,10 @@ export class UserService {
   static async CreateProfile(): Promise<any> {
     const response: AxiosResponse<UserServiceInterface.SignUpServiceInterface> =
       await axios.post(
-        `${BASE_API}/profile`,
-        // 요청 본문이 필요한 경우 여기에 추가
+        `/profile`,
         {},
         {
+          baseURL: `${BASE_API}`,
           headers: {
             authorization: localStorage.getItem("token"),
           },

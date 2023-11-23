@@ -6,7 +6,7 @@ import FeedViewModel from "@/view-model/feed/class/FeedViewModel";
 import { useRouter } from "next/navigation";
 
 const FeedCommentItem: React.FC<{
-  id: any;
+  id: number;
   commenter: any;
   deleteComment: any;
 }> = ({ id, commenter, deleteComment }) => {

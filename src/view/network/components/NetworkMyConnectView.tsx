@@ -1,8 +1,11 @@
 "use client";
 import styled from "styled-components";
 import NetworkMyConnectItem from "./NetworkMyConnectItem";
+import { NetworkMyConnectionInterface } from "@/model/entity/network/NetworkInterface";
 
-const NetworkMyConnectView: React.FC<{ data: any }> = ({ data }) => {
+const NetworkMyConnectView: React.FC<{
+  data: NetworkMyConnectionInterface[];
+}> = ({ data }) => {
   return (
     <RecentConnectWrapper>
       <StyleWrapper>
@@ -11,7 +14,7 @@ const NetworkMyConnectView: React.FC<{ data: any }> = ({ data }) => {
         <NetworkConnectionUnderLine />
       </StyleWrapper>
       <ItemWrapper>
-        {data.map((data: any) => (
+        {data.map((data) => (
           <NetworkMyConnectItem data={data} />
         ))}
       </ItemWrapper>

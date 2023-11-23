@@ -6,6 +6,11 @@ import * as FeedServiceInterface from "../interface/FeedServiceInterface";
 import BASE_API from "@/model/config";
 
 export class FeedService {
+  static searchParam: any;
+  static setSearchParam(searchParams: URLSearchParams) {
+    this.searchParam = searchParams;
+  }
+
   static async postFeed(
     content: string,
     images: string | null
@@ -125,20 +130,29 @@ export class FeedService {
     return response;
   }
 
-  static async getFeedList(): // searchValue: any
-  Promise<FeedInterface.FeedListInterface[]> {
+  static async getFeedList(): Promise<FeedInterface.FeedListInterface[]> {
     const token = localStorage.getItem("token");
+    const getSearchParams = this.searchParam;
+    const sort = getSearchParams.get("sort");
+    const search = getSearchParams.get("search");
+    const tag = getSearchParams.get("tag");
+    const limit = getSearchParams.get("limit");
+    const offset = getSearchParams.get("offset");
+    const params = [];
+    if (sort) params.push(`sort=${sort}`);
+    if (search) params.push(`search=${search}`);
+    if (tag) params.push(`tag=${tag}`);
+    if (limit) params.push(`limit=${limit}`);
+    if (offset) params.push(`offset=${offset}`);
 
+    const paramsString = params.join("&");
     const response: AxiosResponse<FeedServiceInterface.FeedListData[]> =
-      await axios.get(
-        `/feed`,
-        /*${searchValue}*/ {
-          baseURL: `${BASE_API}`,
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
+      await axios.get(`/feed?${paramsString ? paramsString : ""}`, {
+        baseURL: `${BASE_API}`,
+        headers: {
+          Authorization: token,
+        },
+      });
 
     const result = response.data.map(
       (feedList) =>

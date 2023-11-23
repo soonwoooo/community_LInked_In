@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-
 export interface FeedServiceInterface {
   postFeed: (content: string, images: string | null) => Promise<PostMyFeedData>;
   postLike: (id: number) => Promise<PostLike>;
@@ -10,7 +8,7 @@ export interface FeedServiceInterface {
   getMyProfile: (id: number) => Promise<MyProfileData>;
   getMyHashtag: (id: number) => Promise<HashTagData>;
 }
-//피드 post//
+
 export interface PostMyFeedData {
   content: string;
   images: { imageUrl: string | null };
@@ -41,14 +39,13 @@ export interface ChangeUserId {
   id: number;
 }
 
-//피드 리스트 get//
 export interface FeedListData {
   id: number;
   content: string;
   createdAt: string;
   updatedAt: string;
   author: { id: number; name: string; profileImage: string; job: string };
-  likes: { id: number; createdAt: string }; //어떤사람이 좋아요눌럿는지?
+  likes: { id: number; createdAt: string };
   images: { imageUrl: string | null };
   isLiked: boolean;
   video: string;
@@ -58,12 +55,11 @@ export interface FeedListData {
     createdAt: string;
     updatedAt: string;
     commenter: { id: number; name: string };
-  }; //댓글
+  };
   likesCount: number;
   commentsCount: number;
 }
 
-// 피드속 내 프로필 //
 export interface MyProfileData {
   id: number;
   profileBackImage: string;

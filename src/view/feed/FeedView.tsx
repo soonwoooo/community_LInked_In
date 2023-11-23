@@ -4,49 +4,38 @@ import FeedPostView from "./components/FeedPostView";
 import FeedListView from "./components/FeedListView";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import FeedMyProfileView from "./components/FeedMyProfileView";
 import FeedHashTagView from "./components/FeedHashTagView";
 import FeedViewModel from "@/view-model/feed/class/FeedViewModel";
+import { HashTagData } from "@/model/service/interface/FeedServiceInterface";
+import { MyProfileData } from "@/model/service/interface/FeedServiceInterface";
 
 const FeedView = () => {
   const [index, setIndex] = useState<string>("0");
-  const [myProfileData, setMyProfileData] = useState<any | null>(null);
-  const [myHashtagData, setMyHashtagData] = useState<any | null>(null);
+  const [myProfileData, setMyProfileData] = useState<MyProfileData | null>(
+    null
+  );
+  const [myHashtagData, setMyHashtagData] = useState<HashTagData | null>(null);
   const [feedListData, setFeedListData] = useState<any | null>(null);
-  const router = useRouter();
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setIndex(e.target.value);
   };
 
-  const searchParams = new URLSearchParams(document.location.search);
-
-  const searchValue = searchParams.get("search");
+  const searchParams = useSearchParams();
+  FeedViewModel.setSearchParam(searchParams);
 
   const fetchData = async () => {
     try {
-      const getFeedList = await FeedViewModel
-        .getFeedListData
-        // searchValue
-        ();
+      const getFeedList = await FeedViewModel.getFeedListData();
 
       setFeedListData(getFeedList);
 
       const getMyHashtag = await FeedViewModel.getFeedMyHashtagData();
-
       setMyHashtagData(getMyHashtag);
 
-      const userId: number | null = parseInt(
-        localStorage.getItem("userId") || "-1",
-        10
-      );
+      const userId = parseInt(localStorage.getItem("userId") || "-1", 10);
       const getMyProfile = await FeedViewModel.getFeedMyProfileData(userId);
-
-      setMyProfileData(getMyProfile);
-
-      // const getSearchParams = await FeedViewModel.getFeedMyProfileData(
-      //   searchParams
-      // );
 
       setMyProfileData(getMyProfile);
     } catch (error) {
@@ -55,7 +44,7 @@ const FeedView = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   if (
     myProfileData === null ||
@@ -65,7 +54,7 @@ const FeedView = () => {
     return <div>Loading...</div>;
   }
 
-  const createFeed = (content: any, image: string | null) => {
+  const createFeed = (content: string, image: string | null) => {
     FeedViewModel.postFeedData(content, image).then((res) => {
       setFeedListData(res);
     });
@@ -88,19 +77,17 @@ const FeedView = () => {
     });
   };
 
+  // const serachFeed = (searchValue: string) => {
+  //   FeedViewModel.getSearchListData(searchValue).then((res) => {
+  //     setFeedListData(res);
+  //   });
+  // };
+
   return (
     <FeedWrapper>
       <FeedLeftContent>
         <FeedPostView postFeed={createFeed} />
-        <SortContainer>
-          <SortLine />
-          <SortLetterContainer>
-            <SortBy>Sort By:</SortBy>
-            <SortSection value={index} onChange={onSelect}>
-              <option value="0">recent</option>
-            </SortSection>
-          </SortLetterContainer>
-        </SortContainer>
+        <SortContainer></SortContainer>
         <FeedListView
           data={feedListData}
           myProfileData={myProfileData}

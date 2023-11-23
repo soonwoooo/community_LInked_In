@@ -73,7 +73,6 @@ const ProfileView = ({ id }: { id: number }) => {
               <ProfileTitleView data={titleData} />
               {myProfileCheck && (
                 <ModalEdit
-                  data={titleData}
                   deleteBtn={false}
                   newBtn={false}
                   title="프로필 수정"

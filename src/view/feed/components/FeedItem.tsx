@@ -25,7 +25,7 @@ const FeedItem: React.FC<{
   const [likes, setLikes] = useState(data.likesCount);
   const [isLiked, setIsLiked] = useState(data.isLiked);
   const textareaRef = useRef(null);
-  const [height, setHeight] = useState(40); // 최소 높이
+  const [height, setHeight] = useState(40);
   const [showComments, setShowComments] = useState(false);
   const [commentOpened, setCommentOpened] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
@@ -33,7 +33,6 @@ const FeedItem: React.FC<{
   const [commentText, setCommentText] = useState("");
   const [showPostButton, setShowPostButton] = useState(false);
   const router = useRouter();
-  //댓글 더보기
   const handleShowMoreComments = () => {
     setShowAllComments(true);
   };

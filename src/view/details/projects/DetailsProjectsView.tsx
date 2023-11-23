@@ -46,7 +46,6 @@ const DetailsProjectsView = ({ id }: { id: number }) => {
   );
 
   const myProfile: boolean = userIdFromLocalStorage === titleData.user.id;
-
   return (
     <DetailsProjectViewStyle>
       <DetailsViewLayout>
@@ -78,7 +77,6 @@ const DetailsProjectsView = ({ id }: { id: number }) => {
             <ProfileProjectsCard>
               {myProfile && (
                 <ModalEdit
-                  data={item}
                   newBtn={false}
                   deleteBtn={true}
                   title="프로젝트 수정"

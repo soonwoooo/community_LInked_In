@@ -1,8 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import * as HeaderInterface from "@/model/entity/header/HeaderInterface";
 import * as HeaderServiceInterface from "../interface/HeaderServiceInterface";
-import * as Header from "@/model/entity/header/Header";
-
 import BASE_API from "@/model/config";
 
 export class HeaderService {

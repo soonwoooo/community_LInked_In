@@ -67,6 +67,7 @@ const DetailsExperienceView = ({ id }: { id: number }) => {
             title="이력 생성"
             layout="experience_null"
             click={isChange}
+            profileId={id}
           />
         )}
 
@@ -76,12 +77,12 @@ const DetailsExperienceView = ({ id }: { id: number }) => {
             <ModalPosition>
               {myProfile && (
                 <ModalEdit
-                  data={item}
                   newBtn={false}
                   deleteBtn={true}
                   title="이력 수정"
                   layout="experience"
                   click={isChange}
+                  profileId={id}
                   id={item.id}
                 />
               )}
@@ -180,6 +181,7 @@ const CareerPic = styled(Image)`
   background-color: #ed8f03;
   display: block;
   margin-right: 16px;
+  object-fit: cover;
 `;
 
 const CareerInfoBox = styled.div``;

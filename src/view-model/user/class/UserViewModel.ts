@@ -11,7 +11,7 @@ export class UserViewModel {
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     const pwRegex: RegExp =
       /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,20}$/;
-    const nameRegex: RegExp = /^[가-힣]+$/;
+    const nameRegex: RegExp = /^.+$/;
     if (!emailRegex.test(email)) {
       return "emailNotPerfect";
     } else if (!pwRegex.test(password)) {

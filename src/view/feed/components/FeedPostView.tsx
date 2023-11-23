@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { ChangeEvent } from "react";
-import FeedViewModel from "@/view-model/feed/class/FeedViewModel";
 
-const FeedPostView: React.FC<{ postFeed: any }> = ({ postFeed }) => {
+const FeedPostView: React.FC<{
+  postFeed: (content: string, image: string | null) => void;
+}> = ({ postFeed }) => {
   const [postInput, setPostInput] = useState<string>("");
 
   const saveUserFeed = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -14,11 +15,9 @@ const FeedPostView: React.FC<{ postFeed: any }> = ({ postFeed }) => {
   };
 
   const handlePostClick = async () => {
-    postFeed(postInput);
+    postFeed(postInput, "");
     setPostInput("");
   };
-
-  //완료
 
   return (
     <FeedPostWrapper>

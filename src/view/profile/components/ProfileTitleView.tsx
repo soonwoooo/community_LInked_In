@@ -86,6 +86,7 @@ const BackGroundImageWrapper = styled.div<{ imgSrc: string }>`
   display: block;
   width: 100%;
   height: 50%;
+  background-size: cover;
   background-image: ${(props) =>
     props.imgSrc ? `url(${props.imgSrc})` : null};
 `;

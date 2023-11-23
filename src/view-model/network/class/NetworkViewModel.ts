@@ -43,7 +43,11 @@ export class NetworkViewModel {
       const response = await NetworkService.postAccept(id);
       if (response.status >= 200 && response.status < 300) {
         const result = await this.getRecievedConnection();
-        return result;
+        const connected = await this.getMyConnection();
+        return {
+          received: result,
+          connected: connected,
+        };
       }
     } catch (error) {
       return "wrong";

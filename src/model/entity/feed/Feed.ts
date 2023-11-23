@@ -6,7 +6,7 @@ export class FeedListImp implements FeedInterface.FeedListInterface {
   createdAt: string;
   updatedAt: string;
   author: { id: number; name: string; profileImage: string; job: string };
-  likes: { id: number; createdAt: string }; //어떤사람이 좋아요눌럿는지?
+  likes: { id: number; createdAt: string };
   images: { imageUrl: string | null };
   video: string;
   isLiked: boolean;

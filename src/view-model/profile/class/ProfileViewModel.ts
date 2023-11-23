@@ -14,11 +14,33 @@ export class ProfileViewModel {
     }
   }
 
+  static getMyProfileTitleData(): Promise<ProfileViewModelInterface.ProfileTitleInterface> {
+    try {
+      const response = ProfileService.getMyTitle();
+      return response;
+    } catch (error) {
+      console.error("Error getting profile title data:", error);
+      throw error;
+    }
+  }
+
   static getProjectsData(
+    profileId: number
+  ): Promise<ProfileViewModelInterface.ProfileProjectsInterface[]> {
+    try {
+      const response = ProfileService.getProjects(profileId);
+      return response;
+    } catch (error) {
+      console.error("Error getting profile projects data:", error);
+      throw error;
+    }
+  }
+
+  static getOneProjectData(
     id: number
   ): Promise<ProfileViewModelInterface.ProfileProjectsInterface[]> {
     try {
-      const response = ProfileService.getProjects(id);
+      const response = ProfileService.getOneProject(id);
       return response;
     } catch (error) {
       console.error("Error getting profile projects data:", error);
@@ -27,10 +49,22 @@ export class ProfileViewModel {
   }
 
   static getProfileExperience(
+    profileId: number
+  ): Promise<ProfileViewModelInterface.ProfileExperienceInterface[]> {
+    try {
+      const response = ProfileService.getExperience(profileId);
+      return response;
+    } catch (error) {
+      console.error("Error getting profile experience data:", error);
+      throw error;
+    }
+  }
+
+  static getOneProfileExperience(
     id: number
   ): Promise<ProfileViewModelInterface.ProfileExperienceInterface[]> {
     try {
-      const response = ProfileService.getExperience(id);
+      const response = ProfileService.getOneExperience(id);
       return response;
     } catch (error) {
       console.error("Error getting profile experience data:", error);
@@ -39,10 +73,22 @@ export class ProfileViewModel {
   }
 
   static getProfileEducation(
+    profileId: number
+  ): Promise<ProfileViewModelInterface.ProfileEducationInterface[]> {
+    try {
+      const response = ProfileService.getEducation(profileId);
+      return response;
+    } catch (error) {
+      console.error("Error getting profile education data:", error);
+      throw error;
+    }
+  }
+
+  static getOneProfileEducation(
     id: number
   ): Promise<ProfileViewModelInterface.ProfileEducationInterface[]> {
     try {
-      const response = ProfileService.getEducation(id);
+      const response = ProfileService.getOneEducation(id);
       return response;
     } catch (error) {
       console.error("Error getting profile education data:", error);
