@@ -25,9 +25,9 @@
 
 **FE**
 
- NAME | GITHUB |
-| :-----: | :---: | 
 
+| NAME | GITHUB |
+| ------------- | ------------- |
 | 권순우 | https://github.com/soonwoooo | 
 | 박인국 | https://github.com/MakeRobin97 | 
 
