@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# community
 
-## Getting Started
+- 링크드인을 클론코딩한 서비스입니다.<br/>
 
-First, run the development server:
+## community 프로젝트 Front-end 소개
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js와 TypeScript를 활용해서 링크드인을 클론코딩했습니다.
+- 로그인 회원가입부터 프로필 수정, 글 작성 UI와 로직 구현
+  
+### 개발 인원 및 기간
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 개발기간 : 2023/11/6 ~ 2023/11/30
+- 개발 인원 : 프론트엔드 2명(박인국, 권순우) , 백엔드 4명(홍지수, 박경재)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 프로젝트 선정이유
 
-## Learn More
+- 의료인 대상 커뮤니티를 만들기 위해, 커뮤니티의 기본 요소들이 들어간 링크드인을 참고로 함.
+- Next.js와 TypeScript를 적용시켜 디자인 패턴 MvvM으로 개발하기 위함.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br>
 
-## Deploy on Vercel
+## 적용 기술 및 구현 기능
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 적용 기술
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> - Front-End : Next.js, TypeScript, React.js, Styled-componenets, Figma
+
+
+### 구현 기능
+
+##### 회원가입/ 로그인
+
+##### 피드 페이지
+
+#### 친구 신청 확인 페이지
+
+##### 프로필 페이지
+- 프로필 수정
+- 자기소개
+- 경력 생성 / 수정 / 삭제
+- 학력 생성 / 수정 / 삭제
+-  프로젝트 생성 / 수정 /삭제
+
+
+<br/>
